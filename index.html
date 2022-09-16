@@ -1,0 +1,106 @@
+<html>
+<style>
+.container{
+display:flex;
+flex-direction:column;
+height:90vh;
+text-align:center;
+padding:5vw;
+}
+.data-div{
+flex:1;
+}
+.data-label{
+font-size:50px;
+color:blue;
+}
+.data-in{
+font-size:100px;
+border-radius:100px;
+border:1px solid green;
+margin-top:5px;
+text-align:center;
+width:100%; }
+
+#resultDiv{
+text-align:center;
+font-size:100px;
+padding:5vw;
+}
+.valid{
+color:green;
+}
+.inValid{
+color:red;
+}
+</style>
+<div class="container">
+<div class="data-div">
+<div class="data-label">
+Initial Litres
+</div>
+<input type="text" class="data-in" id="initLitres"/>
+</div>
+<div class="data-div">
+<div class="data-label">
+Final Litres
+</div>
+<input type="text" class="data-in" id="finalLitres"/>
+</div>
+<div class="data-div">
+<div class="data-label">
+Initial KiloWatts
+</div>
+<input type="text" class="data-in" id="initWatt"/>
+</div>
+<div class="data-div">
+<div class="data-label">
+Final KiloWatts
+</div>
+<input type="text" class="data-in" id="finalWatt" />
+</div>
+
+
+<div class="data-div" style="text-align:center">
+<button class="data-in" style="width:auto;padding:30px 100px 30px 100px" id="checkBtn">
+Check
+</button>
+</div>
+
+<div class="data-div" id="resultDiv">
+--------
+</div>
+
+<script>
+const checkBtn=document.getElementById('checkBtn');
+const resultDiv=document.getElementById("resultDiv");
+checkBtn.addEventListener("click", function(e) {
+const initLitre = parseFloat(document.getElementById("initLitres").value);
+const finalLitre = parseFloat(document.getElementById("finalLitres").value);
+const initWatt = parseFloat(document.getElementById("initWatt").value);
+const finalWatt = parseFloat(document.getElementById("finalWatt").value);
+var result=(initLitre-finalLitre)/(initWatt-finalWatt);
+result=+result.toFixed(2);
+console.log(result);
+if(result >=3 && result <=3.5){
+
+resultDiv.textContent="( "+result+" ) Valid";
+resultDiv.className="valid";
+}
+else{
+resultDiv.textContent="( "+result+" ) InValid";
+resultDiv.className="InValid";
+}
+});
+
+
+
+
+
+
+</script>
+</div>
+</html>
+
+
+
